@@ -184,6 +184,8 @@ def test_rmse(model, test_set):
 
 # Step 18 - bootstrap_rmse_ci
 def bootstrap_rmse_ci(y_true, y_pred, n_boot=200, alpha=0.05, random_state=42):
+    y_pred=np.array(y_pred)
+    y_true=np.array(y_true)
     rng = np.random.default_rng(random_state)
     n = len(y_true)
     boots = []
