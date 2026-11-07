@@ -203,8 +203,18 @@ def feature_importances(search, k=5):
         (float(round(importance,3)),name) for importance,name in ranked[:k] 
     ]
 
-# Step 20 - worst_errors (not yet solved)
-# TODO: implement
+# Step 20 - worst_errors
+def worst_errors(model, df, k=5):
+    df = add_ratio_features(df)
+    X,y = split_features_labels(df)
+    preds = model.predict(X)
+    dataframe = pd.DataFrame({
+        "actual":y,
+        "predicted":preds,
+        "abs_error":np.abs(y-preds)
+    }, index=df.index)
+    sorted_df = dataframe.sort_values("abs_error",ascending=False)
+    return sorted_df.head(k)
 
 # Step 21 - save_and_reload (not yet solved)
 # TODO: implement
