@@ -88,8 +88,13 @@ from sklearn.preprocessing import StandardScaler
 def numeric_pipeline():
     return make_pipeline(SimpleImputer(strategy="median"), StandardScaler())
 
-# Step 9 - categorical_pipeline (not yet solved)
-# TODO: implement
+# Step 9 - categorical_pipeline
+from sklearn.pipeline import make_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+
+def categorical_pipeline():
+    return make_pipeline(SimpleImputer(strategy="most_frequent",missing_values=None), OneHotEncoder(handle_unknown='ignore'))
 
 # Step 10 - build_preprocessing (not yet solved)
 # TODO: implement
