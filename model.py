@@ -119,8 +119,12 @@ def build_preprocessing(n_clusters=10, gamma=1.0, random_state=42):
         remainder=numeric_pipeline()
     )
 
-# Step 11 - rmse (not yet solved)
-# TODO: implement
+# Step 11 - rmse
+import numpy as np
+def rmse(y_true, y_pred):
+    y_pred = np.array(y_pred)
+    y_true = np.array(y_true)
+    return float(np.sqrt(np.mean((y_true-y_pred)**2)))
 
 # Step 12 - dummy_baseline_rmse (not yet solved)
 # TODO: implement
